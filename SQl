@@ -1,0 +1,168 @@
+CREATE DATABASE IF NOT EXISTS EcoMonitoring1;
+use EcoMonitoring1;
+
+CREATE TABLE Objects(
+ID int NOT NULL primary key auto_increment,
+ObjectName varchar (50) NOT NULL
+);
+
+CREATE TABLE AirPollutant(
+ID int NOT NULL primary key auto_increment,
+PollutantName VARCHAR (50) NOT NULL,
+Tax decimal(10,3) NOT NULL
+);
+
+
+CREATE TABLE AirPollution(
+ObjectNumber int NOT NULL,
+foreign key(ObjectNumber) references Objects(ID),
+PollutantNumber int NOT NULL,
+foreign key(PollutantNumber) references AirPollutant(ID),
+Consume decimal(10,3)
+);
+
+
+
+CREATE TABLE WaterPollutant(
+ID int NOT NULL primary key auto_increment,
+PollutantName VARCHAR (50) NOT NULL,
+Tax decimal(10,3) NOT NULL
+);
+
+CREATE TABLE WaterPollution(
+ObjectNumber int NOT NULL,
+foreign key(ObjectNumber) references Objects(ID),
+PollutantNumber int NOT NULL,
+foreign key(PollutantNumber) references WaterPollutant(ID),
+Consume decimal(10,3)
+);
+
+
+CREATE TABLE SolidPollutant(
+ID int NOT NULL primary key auto_increment,
+PollutantName VARCHAR (70) NOT NULL,
+HazardClass int NOT NULL,
+Tax decimal(10,3) NOT NULL
+);
+
+CREATE TABLE SolidPollution(
+ObjectNumber int NOT NULL,
+foreign key(ObjectNumber) references Objects(ID),
+PollutantNumber int NOT NULL,
+foreign key(PollutantNumber) references SolidPollutant(ID),
+Distance int NOT NULL,
+Consume decimal(10,3)
+);
+
+CREATE TABLE RadioactivePollutant(
+ID int NOT NULL primary key auto_increment,
+PollutantName VARCHAR (70) NOT NULL,
+WasteCategory int NOT NULL,
+TaxCoefProd decimal(10,3) NOT NULL,
+TaxCoefStorage decimal(10,3) NOT NULL
+);
+
+CREATE TABLE RadioactivePollution(
+ObjectNumber int NOT NULL,
+foreign key(ObjectNumber) references Objects(ID),
+PollutantNumber int NOT NULL,
+foreign key(PollutantNumber) references RadioactivePollutant(ID),
+WasteVolume int NOT NULL,
+CalendarQuarter int NOT NULL,
+EnergyVolume int NOT NULL
+);
+
+
+INSERT INTO Objects(ObjectName)
+VALUE
+ ('Ясенсвіт'),
+ ('Трипільська ТЕС'),
+ ('Ветропак'),
+ ('ТЕЦ-4'),
+ ('Київська ГЕС'),
+ ('Скидний канал БСА'),
+ ('Хмельницька АЕС'),
+ ('Запорізька АЕС'),
+ ('Рівненська АЕС');
+ 
+ INSERT INTO AirPollutant(PollutantName,Tax)
+ VALUE
+ ('Вуглецю окис', 96.99),
+ ('Оксид азоту',2574.43),
+ ('Сірководень',8273.63);
+ 
+  INSERT INTO WaterPollutant(PollutantName,Tax)
+ VALUE
+ ('Нітрати', 1108.56),
+ ('Нітрити', 63278.16), 
+ ('Сульфати',369.52);
+ 
+
+ 
+ 
+
+INSERT INTO SolidPollutant(PollutantName,HazardClass,Tax)
+VALUE 
+('Лампи люмінесцентні',1,1546.2),
+('Відпрацьовані мастила',3,14.12),
+('Батареї акумуляторні',2,56.32),
+('Макулатура',4,5.50),
+('Брухт металів',4,5.50);
+
+INSERT INTO SolidPollution(ObjectNumber,PollutantNumber,Distance, Consume)
+VALUE
+(1,1,15,45),
+(1,2,1,340),
+(2,3,7,67),
+(2,5,2,788),
+(3,4,40,34);
+
+INSERT INTO RadioactivePollutant(PollutantName,WasteCategory,TaxCoefProd,TaxCoefStorage)
+VALUE 
+('Уран',1,632539.66,50),
+('Плутоній',1,632539.66,50),
+('Відпрацьоване паливо',2,4216.92,2);
+
+INSERT INTO RadioactivePollution(ObjectNumber,PollutantNumber,WasteVolume,CalendarQuarter, EnergyVolume)
+VALUE
+(7,1,150,2,560000),
+(7,2,77,3,750000),
+(8,1,366,1,885001),
+(8,2,267,5,334520),
+(8,3,15786,1,789000),
+(9,1,540,7,123005),
+(9,3,7683,2,710390);
+
+INSERT INTO AirPollution(ObjectNumber, PollutantNumber,Consume )
+VALUE
+(1,1,0.535),
+(1,2,0.845),
+(2,1,366.84),
+(2,3,8),
+(3,1,5.656),
+(3,2,631.408),
+(4,2,0.08);
+
+INSERT INTO WaterPollution(ObjectNumber, PollutantNumber,Consume )
+VALUE
+(5,3,48.2),
+(5,1,4.2),
+(6,3,59.5),
+(6,2,1.1),
+(4,3,39.1),
+(4,1,19.6);
+
+
+
+
+  SELECT * FROM Objects;
+SELECT * FROM AirPollutant;
+SELECT * FROM WaterPollutant;
+
+ SELECT * FROM WaterPollution;
+  SELECT * FROM AirPollution;
+
+ SELECT * FROM SolidPollutant;
+  SELECT * FROM SolidPollution;
+    SELECT * FROM RadioactivePollutant;
+  SELECT * FROM RadioactivePollution;
