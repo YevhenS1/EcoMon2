@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="view.css">
+    <link rel="shortcut icon" href="images/favicon.png">
+    <title>Моніторинг забруднюючих викидів міст України</title>
+</head>
+<style>
+    .hide {
+        display: none;
+    }
+</style>
+
+
+<body>
+<b>Оберіть вид забруднення для якого необхідно розрахувати податок</b>
+<form action="">
+    <select id="select">
+        <option value="1" selected>за викиди в атмосферне повітря</option>
+        <option value="2">за скиди забруднюючих речовин у водні об'єкти</option>
+        <option value="3">за розміщення відходів</option>
+        <option value="4">за утворення радіоактивних відходів</option>
+        <option value="5">за тимчасове зберігання радіоактивних відходів понад строк</option>
+    </select>
+</form>
+
+<table border="1" class="tab">
+    <tr>
+        <th colspan="8">Обчислення розмірів екологічного податку за викиди забруднюючих речовин в атмосферне повітря</th>
+    </tr>
+    <tr class="first">
+
+        <td>Назва об'єкту спостереження</td>
+        <td>Назва забруднюючої речовини</td>
+        <td>Об'єм викидів забруднюючої речовини, тонн</td>
+        <td>Ставки податку за викиди в атмосферне повітря</td>
+        <td>Сума податку, грн</td>
+    </tr>
+
+    <tr class="row">
+        {{#each AirPollution}}
+            {{AirPollutionTable this.ObjectNumber this.PollutantNumber this.Consume}}
+        {{/each}}
+    </tr>
+
+</table>
+
+
+<table border="1" class="tab hide">
+    <tr>
+        <th colspan="8">Обчислення розмірів екологічного податку за викиди забруднюючих речовин у водні об'єкти (р. Дніпро)</th>
+    </tr>
+    <tr class="first">
+
+        <td>Назва об'єкту спостереження</td>
+        <td>Назва забруднюючої речовини</td>
+        <td>Об'єм викидів забруднюючої речовини, тонн</td>
+        <td>Ставки податку за викиди в атмосферне повітря</td>
+        <td>Сума податку, грн</td>
+    </tr>
+
+<tr class="row">
+    {{#each WaterPollution}}
+        {{WaterPollutionTable this.ObjectNumber this.PollutantNumber this.Consume}}
+    {{/each}}
+</tr>
+
+</table>
+
+
+
+
+<table border="1" cellspacing="0" cellpadding="0" class="tab hide">
+    <tr>
+        <th colspan="8">Обчислення розмірів екологічного податку за розміщення відходів</th>
+    </tr>
+    <tr class="first">
+
+        <td>Назва об'єкту спостереження</td>
+        <td>Назва забруднюючої речовини</td>
+        <td>Об'єм викидів забруднюючої речовини, тонн</td>
+        <td>Ставки податку за розміщення відходів</td>
+        <td>Сума податку, грн</td>
+    </tr>
+
+    <tr class="row">
+
+        {{#each SolidPollution}}
+            {{SolidPollutionTable this.ObjectNumber this.PollutantNumber this.Consume}}
+        {{/each}}
+    </tr>
+</table>
+
+
+<table border="1" cellspacing="0" cellpadding="0" class="tab hide">
+    <tr>
+        <th colspan="8">Обчислення розмірів екологічного податку за утворення радіоактивних відходів</th>
+    </tr>
+    <tr class="first">
+
+        <td>Назва об'єкту спостереження</td>
+        <td>Назва забруднюючої речовини</td>
+        <td>кВт-год виробленої електричної енергії</td>
+        <td>Категорія відходів</td>
+        <td>Ставки податку за утворення радіоактивних відходів</td>
+        <td>Сума податку, грн</td>
+    </tr>
+
+    <tr class="row">
+
+        {{#each RadioactivePollution}}
+            {{RadioactivePollutionTable this.ObjectNumber this.PollutantNumber  this.EnergyVolume}}
+        {{/each}}
+    </tr>
+</table>
+
+
+<table border="1" cellspacing="0" cellpadding="0" class="tab hide">
+    <tr>
+        <th colspan="8">Обчислення розмірів екологічного податку за тимчасове зберігання радіоактивних відходів понад строк</th>
+    </tr>
+    <tr class="first">
+
+        <td>Назва об'єкту спостереження</td>
+        <td>Назва забруднюючої речовини</td>
+        <td>Об'єм зберігання радіоактивних відходів в m³</td>
+        <td>Кількість кварталів, протягом яких радіоактивні відходи зберігаються понад установлений строк</td>
+        <td>Ставки податку за зберігання радіоактивних відходів за m³</td>
+        <td>Сума податку, грн</td>
+    </tr>
+
+    <tr class="row">
+
+        {{#each RadioactivePollution}}
+            {{RadioactivePollutionTable1 this.ObjectNumber this.PollutantNumber this.WasteVolume this.CalendarQuarter }}
+        {{/each}}
+    </tr>
+</table>
+
+</body>
+
+<script>
+    let select = document.querySelector("#select");
+    select.addEventListener("change",(e) => {
+        const value = e.target.value;
+        const elements = document.querySelectorAll('.tab');
+        const elementsArray = Array.from(elements);
+
+        for(let i = 0; i < elementsArray.length; i++) {
+            elementsArray[i].classList.add('hide');
+            elementsArray[value-1].classList.remove('hide');
+        }
+    } )
+</script>
+</html>
