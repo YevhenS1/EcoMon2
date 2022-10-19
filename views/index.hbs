@@ -17,16 +17,27 @@
 
 <body>
 <header>
+    <img id="logo_header" src="images/logo.png" alt="">
     <nav>
         <ul>
-            <li><a>dfsdsf</a></li>
-            <li><a>sdfdsf</a></li>
-            <li><a>sdfsdf</a></li>
-            <li><a>sdfdsfs</a></li>
+            <li><a href="#left_paragraph">Вступ</a></li>
+            <li><a href="#statistics">Статистика</a></li>
+            <li><a href="#image_title">Посиланная</a></li>
+            <li><a href="#contacts">Контакти</a></li>
         </ul>
     </nav>
 </header>
-<b>Оберіть вид забруднення для якого необхідно розрахувати податок</b>
+<div class="clearfix"></div>
+<main>
+    <p id="left_paragraph">
+        У світі останніми роками почали частіше порушувати питання екології і впливу діяльності людини на навколишнє середовище. Це поступово стало трендом, котрий підтримують всесвітньо відомі компанії з абсолютно різних сфер, починаючи від IT-гігантів на прикладі Apple і закінчуючи мережами швидкого харчування на прикладі McDonalds. Не залишаються осторонь цієї теми і окремі популярні персони, такі як Леонардо ді Капріо, котрий регулярно привертає увагу громадськості на екологічні проблеми та навіть був визнаний представником ООН з питань зміни клімату.
+    </p>
+
+    <p id="right_paragraph">
+        Нас теж зацікавила тема екології та стану навколишнього середовища, тож нашою командою було вирішено провести невелике дослідження. Ми обрали декілька міст Київської області, знайшли дані щодо кількості та вмісту забруднюючих викидів, а також порівняли результати між собою та, головне, порівняли їх з нормою, котра встановлена Міністерством захисту довкілля та природних ресурсів України. Результати наведені у таблиці нижче.
+    </p>
+
+    <b id="statistics">Оберіть вид забруднення для якого необхідно розрахувати податок:</b>
 <form action="">
     <select id="select">
         <option value="1" selected>за викиди в атмосферне повітря</option>
@@ -37,7 +48,7 @@
     </select>
 </form>
 
-<table border="1" class="tab">
+<table class="tab">
     <tr>
         <th colspan="8">Обчислення розмірів екологічного податку за викиди забруднюючих речовин в атмосферне повітря</th>
     </tr>
@@ -59,7 +70,7 @@
 </table>
 
 
-<table border="1" class="tab hide">
+<table class="tab hide">
     <tr>
         <th colspan="8">Обчислення розмірів екологічного податку за викиди забруднюючих речовин у водні об'єкти (р. Дніпро)</th>
     </tr>
@@ -83,7 +94,7 @@
 
 
 
-<table border="1" cellspacing="0" cellpadding="0" class="tab hide">
+<table class="tab hide">
     <tr>
         <th colspan="8">Обчислення розмірів екологічного податку за розміщення відходів</th>
     </tr>
@@ -105,7 +116,7 @@
 </table>
 
 
-<table border="1" cellspacing="0" cellpadding="0" class="tab hide">
+<table class="tab hide">
     <tr>
         <th colspan="8">Обчислення розмірів екологічного податку за утворення радіоактивних відходів</th>
     </tr>
@@ -128,7 +139,7 @@
 </table>
 
 
-<table border="1" cellspacing="0" cellpadding="0" class="tab hide">
+<table class="tab hide">
     <tr>
         <th colspan="8">Обчислення розмірів екологічного податку за тимчасове зберігання радіоактивних відходів понад строк</th>
     </tr>
@@ -149,8 +160,45 @@
         {{/each}}
     </tr>
 </table>
-<img src="/images/n1.png" alt="">
-<img src="images/favicon.jpg" alt="">
+
+    <section>
+        <p id="image_title">Пропонуємо додатково ознайомитись з детальним аналізом екологічної ситуації на підприємствах, котрі мають
+            найбільші екологічні податки:</p>
+        <div id="flex_wrapper">
+        <div>
+            <a href="http://www.radiationproblems.org.ua/24_2019/NRCRM_2019_Paper_8.pdf" target="_blank"><img src="images/rovno.JPG" alt=""></a>
+            <p>Рівненська АЕС</p>
+        </div>
+
+        <div>
+            <a href="http://dspace.tnpu.edu.ua/bitstream/123456789/21162/1/29_Kiryk.pdf" target="_blank"><img src="images/khmel.jpg" alt=""></a>
+            <p>Хмельницька АЕС</p>
+        </div>
+
+        <div>
+            <a href="http://www.radiationproblems.org.ua/18_2013/prmr_2013_18_6.pdf" target="_blank"><img src="images/zapor.JPG" alt=""></a>
+            <p>Запорізська АЕС</p>
+        </div>
+        </div>
+    </section>
+</main>
+
+
+
+<footer>
+    <a href="https://mepr.gov.ua/" target="_blank" id="contacts"><img src="images/logo1.png" width="80px" alt=""></a><br>
+    <p>
+        mobile:<a href = "tel:(044) 206-31-15"> (044) 206-31-15</a>&nbsp
+        <span style="border-left:3px solid #23359C;"></span>
+        &nbsp email:<a href = "mailto:info@mepr.gov.ua"> info@mepr.gov.ua</a><br>
+    </p>
+
+    <p id="copyright">
+        Copyright &copy; 2021
+    </p>
+
+
+</footer>
 </body>
 
 <script>

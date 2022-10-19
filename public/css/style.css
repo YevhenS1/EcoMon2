@@ -1,3 +1,180 @@
-h1{
-font-size: 200px;
+*{
+    margin: 0;
+    padding: 0;
 }
+
+body{
+    background-color: #CED2E9;
+    font-size: 18px;
+}
+
+header{
+    height: 60px;
+    background-color: #7484DE;
+    font-size: 18px;
+
+}
+
+#logo_header{
+    width: 50px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}
+
+nav ul{
+    margin: 0 auto;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+
+nav ul li{
+    line-height: 60px;
+
+}
+nav ul li a{
+    display: block;
+    padding: 0 50px;
+
+}
+
+nav ul li a:link,nav ul li a:visited{
+    color: white;
+    text-decoration: none;
+}
+
+nav ul li a:hover, nav ul li a:active{
+    background-color: #455AC9;
+}
+
+main{
+    margin: 50px 100px;
+}
+
+#left_paragraph, #right_paragraph{
+    color: #262949;
+    position: absolute;
+    width: 350px;
+    text-align: justify;
+    border-radius: 45px;
+}
+
+#left_paragraph{
+    background-color: #92A0F0;
+    width: 400px;
+    top: 120px;
+    left: 230px;
+    padding: 30px;
+
+}
+
+#right_paragraph{
+    background-color: #AEB7EB;
+    width: 330px;
+    border-radius: 45px;
+    padding: 30px 40px;
+    top: 290px;
+    left: 690px;
+}
+
+b{
+    margin: 600px 50px 10px 0px;
+    display: block;
+    font-size: 18px;
+}
+
+form{
+    margin-bottom: 10px;
+}
+
+select{
+    padding: 5px;
+    background-color: #657AF7;
+    outline: none;
+}
+option{
+    padding: 3px;
+
+}
+
+.tab{
+    border-collapse: collapse;
+
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid black;
+
+}
+
+tr:nth-of-type(-n+2){
+    background-color: #AEB7EB;
+}
+
+#image_title{
+    background-color: #AEB7EB;
+    border-radius: 40px;
+    padding: 5px 15px;
+
+    text-align: justify;
+    margin-top: 120px;
+    font-size: 18px;
+    border: 1px solid #AEB7EB;
+}
+
+#flex_wrapper{
+    margin: 30px 70px 70px;
+    display: flex;
+    justify-content: space-between;
+    text-align: justify;
+}
+
+#flex_wrapper img{
+    width: 250px;
+    height: 250px;
+    border-radius: 180px;
+    border: 10px solid #8392EC;
+}
+
+#flex_wrapper img:hover, #flex_wrapper img:active{
+    border: 10px solid #5167E4;
+}
+
+#flex_wrapper div p{
+    margin-top: 5px;
+    text-align: center;
+    font-size: 18px;
+}
+
+footer{
+    margin-top: 100px;
+    padding-bottom: 15px;
+    text-align: center;
+    background-color: #485BC5;
+    color: white;
+    font-size: 17px;
+}
+
+footer a:link, footer a:visited{
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover, footer a:active{
+    text-decoration: underline;
+}
+
+#contacts{
+    padding-right: 5px;
+}
+
+#copyright{
+    padding-top: 5px;
+}
+
+
